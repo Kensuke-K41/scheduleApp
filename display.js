@@ -46,7 +46,6 @@ async function displaySchedules(storeName) {
         const nightTime = 1320;
         const dayWidth = scheduleComponent.offsetWidth / 7;
         const minutesWith = scheduleComponent.offsetHeight / (nightTime - moningTime) ;
-        console.log(minutesWith);
         const dayIndex = days.indexOf(schedule.when);
         const [startHour, startMinute] = schedule.startTime.split(':').map(Number);
         const [endHour, endMinute] = schedule.endTime.split(':').map(Number);
@@ -60,6 +59,8 @@ async function displaySchedules(storeName) {
         Field_div.style.width = `${dayWidth}px`;
         Field_div.style.top = `${minutesWith * startTimeInMinutes}px`
         Field_div.style.height = `${minutesWith * durationInMinutes}px`
+        Field_div.style.borderTop = "1px solid black"
+        Field_div.style.borderBottom = "1px solid black"
 
         /* 曜日によって表示される場所（横方向）が違うからその設定よう。         *
         indexは上のdays配列のindex番号と同じ。
@@ -149,11 +150,10 @@ async function displaySchedules(storeName) {
 
         const attend_label = document.createElement("label");
         attend_label.setAttribute("for", `${schedule.timeId}_attend`);
-        attend_label.innerText = "出席数";
+        attend_label.innerText = "出: ";
         counter_div.appendChild(attend_label);
         //出席labelのCSS
         //attend_label.style.(プロパティ) = "(プロパティ値)";  の形で書く。
-
 
         const attend_input = document.createElement("input");
         attend_input.type = "number";
@@ -163,11 +163,11 @@ async function displaySchedules(storeName) {
         counter_div.appendChild(attend_input);
         //主席のCSS
         //attend_input.style.(プロパティ) = "(プロパティ値)";  の形で書く。
-
+        attend_input.style.width = "30px";
 
         const absence_label = document.createElement("label");
         absence_label.setAttribute("for", `${schedule.timeId}_absence`);
-        absence_label.innerText = "欠席数";
+        absence_label.innerText = "欠: ";
         counter_div.appendChild(absence_label);
         //欠席labelのCSS
         //absence_label.style.(プロパティ) = "(プロパティ値)";  の形で書く。
@@ -181,19 +181,11 @@ async function displaySchedules(storeName) {
         counter_div.appendChild(absence_input);
         //欠席のCSS
         //attend_input.style.(プロパティ) = "(プロパティ値)";  の形で書く。
+        absence_input.style.width = "30px";
 
-
-        const percent_label = document.createElement("label");
-        percent_label.setAttribute("for", `${schedule.timeId}_percent`);
-        percent_label.innerText = "出席率";
-        counter_div.appendChild(percent_label);
-        //パーセントlabelのCSS
-        //percent_label.style.(プロパティ) = "(プロパティ値)";  の形で書く。
-
-
-        const percent_span = document.createElement("span");
-        percent_span.id = `${schedule.timeId}_percent`;
-        counter_div.appendChild(percent_span);
+        const percent_div = document.createElement("div");
+        percent_div.id = `${schedule.timeId}_percent`;
+        Field_div.appendChild(percent_div);
         //パーセントlCSS
         //percent_span.style.(プロパティ) = "(プロパティ値)";  の形で書く。
 
@@ -203,7 +195,7 @@ async function displaySchedules(storeName) {
             const val2 = parseFloat(absence_input.value) || 0;
             const sum = val1 + val2;
             const percent = sum === 0 ? 0 : (val1 / sum * 100).toFixed(2);
-            percent_span.textContent = `${percent}%`;
+            percent_div.textContent = `出席率 ${percent}%`;
         }
         updatePercent();
 
@@ -265,3 +257,5 @@ async function displayDB(storeName) {
         scheduleList.appendChild(scheduleDiv);
     });
 }
+
+

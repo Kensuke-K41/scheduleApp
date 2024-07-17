@@ -51,4 +51,48 @@ main {
 
 #schedule-list{
     height: 600px;
+    position: relative;
+}
+
+#schedule-container {
+    display: flex;
+    height: 600px;
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+#time-axis {
+    width: 50px;
+    border-right: 1px solid #000;
+}
+
+
+#day-of-week {
+    display: flex;
+    height: 30px;
+}
+
+.column {
+    flex: 1;
+    border-right: 1px solid #000;
+    text-align: center;
+    font-weight: bold;
+}
+
+#schedule-list {
+    flex-grow: 1;
+    display: flex;
+}
+
+.time-slot {
+    height: 30px;
+    border-bottom: 1px solid #eee;
+    font-size: 0.8em;
+    text-align: right;
+    padding-right: 5px;
+}
+
+.schedule-column {
+    flex: 1;
+    border-right: 1px solid #000;
 }
