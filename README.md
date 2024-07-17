@@ -25,7 +25,7 @@
 
 ## 使用技術
 
-- [HTML5](https://developer.mozilla.org/ja/docs/Web/Guide/HTML/HTML5): アプリケーションの構造
+- [HTML5](https://developer.mozilla.org/en-US/docs/Glossary/HTML5): アプリケーションの構造
 - [JavaScript (ES6+)](https://developer.mozilla.org/ja/docs/Web/JavaScript): アプリケーションのロジックとインタラクション
 - [IndexedDB](https://developer.mozilla.org/ja/docs/Web/API/IndexedDB_API): クライアントサイドでのデータ永続化
 - [HTML2PDF.js](https://ekoopmans.github.io/html2pdf.js/): PDFの生成とダウンロード
