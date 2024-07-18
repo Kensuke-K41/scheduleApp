@@ -50,10 +50,6 @@ main {
     height: 100%;
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> edcdb0b2e15950b21720e6a39968fc2895fdf00d
 #schedule-container {
     display: flex;
     flex-grow: 1;
@@ -73,19 +69,11 @@ main {
     font-weight: bold;
 }
 
-<<<<<<< HEAD
 #row {
-=======
-#schedule-list{
-    position: relative;
-    border: 10px solid;
-    flex-grow: 1;
->>>>>>> edcdb0b2e15950b21720e6a39968fc2895fdf00d
     display: flex;
     flex-direction: row;
 }
-
-<<<<<<< HEAD
+ 
 #time-axis {
     top: 31px;
     width: calc(100vw/8 - 1px);
@@ -105,6 +93,4 @@ main {
     flex: 1;
     border-right: 1px solid #000;
 }
-
-=======
->>>>>>> edcdb0b2e15950b21720e6a39968fc2895fdf00d
+  
