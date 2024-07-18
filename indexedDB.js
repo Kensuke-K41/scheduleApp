@@ -40,27 +40,6 @@ async function updateField(storeName, timeId, field, newValue) {
 }
 */
 
-async function updateField(storeName, timeId, field, newValue) {
-    const db = await dbPromise;
-    const tx = db.transaction(storeName, 'readwrite');
-    const store = tx.objectStore(storeName);
-
-    try {
-        const schedule = await store.get(timeId); // get() が完了するまで待つ
-        
-        if (schedule) { // schedule が undefined でないことを確認
-            schedule[field] = newValue;
-            await store.put(schedule); 
-        } else {
-            console.error("Schedule not found for timeId:", timeId); 
-        }
-        
-        await tx.done; 
-    } catch (error) {
-        console.error(`updateField エラー:`, error);
-        // エラー処理
-    }
-}
 // 全スケジュールの取得
 async function getAllSchedules(storeName) {
     const db = await dbPromise;

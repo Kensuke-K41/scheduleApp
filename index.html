@@ -17,65 +17,32 @@
                 <button class="season-btn" data-season="winter">冬</button>
             </div>
             <span id="current-season">現在の季節: 春</span>
-            <button id="show-settings" onclick="changeToSettings()">設定</button>
+            <button id="show-settings" onclick="displaySettings()">設定</button>
             <button id="downloadPdfButton">PDF</button>
         </nav>
     </header>
     <main>
-        <div id="settingsPage">
-            <h2>設定画面</h2>
-            <form id="schedule-form">
-                <label for="when">曜日:</label>
-                <select id="when" required>
-                    <option value="">--曜日を選択してください--</option>
-                    <option value="Mo">月曜日</option>
-                    <option value="Tu">火曜日</option>
-                    <option value="We">水曜日</option>
-                    <option value="Th">木曜日</option>
-                    <option value="Fr">金曜日</option>
-                    <option value="Sa">土曜日</option>
-                    <option value="Su">日曜日</option>
-                </select>
-
-                <label for="startTime">開始時刻:</label>
-                <input type="time" id="startTime" required>
-
-                <label for="endTime">終了時刻:</label>
-                <input type="time" id="endTime" required>
-
-                <label for="name">名前:</label>
-                <input type="text" id="name">
-
-                <label for="nameLink">リンク:</label>
-                <input type="url" id="nameLink">
-
-                <label for="place">場所:</label>
-                <input type="text" id="place">
-
-                <label for="memo">メモ:</label>
-                <textarea id="memo"></textarea>
-
-            </form>
-            <button id="save-schedule" onclick="saveSchdule">スケジュールに追加する</button>
-            <button onclick="changeToDisplay()">ホーム画面に戻る</button>
-            <button id="clear-allSchedules">予定表をリセットする</button>
-            <button id="show-all-db">データベースをみる</button>
-        </div>
         <div id="displayPage">
             <h2>予定表</h2>
             <div id="schedule-container">
                 <div id="time-axis">
                 </div>
-                    <div id="day-of-week">
-                        <div class="column">日</div>
-                        <div class="column">月</div>
-                        <div class="column">火</div>
-                        <div class="column">水</div>
-                        <div class="column">木</div>
-                        <div class="column">金</div>
-                        <div class="column">土</div>
-                    </div>
-                    <div id="schedule-list">
+                <div class="column">時間\曜日</div>
+                <div class="column">日</div>
+                <div class="column">月</div>
+                <div class="column">火</div>
+                <div class="column">水</div>
+                <div class="column">木</div>
+                <div class="column">金</div>
+                <div class="column">土</div>
+                <div id="schedule-list">
+                    <div class="column"></div>
+                    <div class="column"></div>
+                    <div class="column"></div>
+                    <div class="column"></div>
+                    <div class="column"></div>
+                    <div class="column"></div>
+                    <div class="column"></div>
                 </div>
             </div>
         </div>

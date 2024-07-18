@@ -49,10 +49,6 @@ main {
     height: 100%;
 }
 
-#schedule-list{
-    height: 600px;
-    position: relative;
-}
 
 #schedule-container {
     display: flex;
@@ -79,20 +75,10 @@ main {
     font-weight: bold;
 }
 
-#schedule-list {
+#schedule-list{
+    position: relative;
+    border: 10px solid;
     flex-grow: 1;
     display: flex;
 }
 
-.time-slot {
-    height: 30px;
-    border-bottom: 1px solid #eee;
-    font-size: 0.8em;
-    text-align: right;
-    padding-right: 5px;
-}
-
-.schedule-column {
-    flex: 1;
-    border-right: 1px solid #000;
-}
