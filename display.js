@@ -33,7 +33,6 @@ jsでのCSS操作は(要素名_タグ名).style.(プロパティ) = "(プロパ�
 async function displaySchedules(storeName) {
     const schedules = await getAllSchedules(storeName);
     const scheduleComponent = document.getElementById("schedule-list");
-    scheduleComponent.innerHTML = '';
 
     const days = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
 

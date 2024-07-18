@@ -59,6 +59,11 @@ function runTestDataInsertion(count = 20) {
     });
 }
 
+
+async function allCash(){
+    const dbName = "schedule-db"; 
+    indexedDB.deleteDatabase(dbName);
+}
 // コンソールで以下を実行してテストデータを挿入
 // runTestDataInsertion();
 // または特定の数のテストデータを挿入する場合
