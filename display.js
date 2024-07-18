@@ -33,6 +33,15 @@ jsでのCSS操作は(要素名_タグ名).style.(プロパティ) = "(プロパ�
 async function displaySchedules(storeName) {
     const schedules = await getAllSchedules(storeName);
     const scheduleComponent = document.getElementById("schedule-list");
+    scheduleComponent.innerHTML = `
+                        <div class="schedule-column"></div>
+                        <div class="schedule-column"></div>
+                        <div class="schedule-column"></div>
+                        <div class="schedule-column"></div>
+                        <div class="schedule-column"></div>
+                        <div class="schedule-column"></div>
+                        <div class="schedule-column"></div>
+  `;
 
     const days = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
 
@@ -55,11 +64,11 @@ async function displaySchedules(storeName) {
 
         Field_div.style.position = "absolute";
         Field_div.style.left = `${dayWidth * dayIndex}px`;
-        Field_div.style.width = `${dayWidth}px`;
+        Field_div.style.width = `${dayWidth - 1}px`;
         Field_div.style.top = `${minutesWith * startTimeInMinutes}px`
         Field_div.style.height = `${minutesWith * durationInMinutes}px`
-        Field_div.style.borderTop = "1px solid black"
-        Field_div.style.borderBottom = "1px solid black"
+        Field_div.style.border = "1px solid black"
+        Field_div.style.backgroundColor = "#7CD0F2"
 
         /* 曜日によって表示される場所（横方向）が違うからその設定よう。         *
         indexは上のdays配列のindex番号と同じ。

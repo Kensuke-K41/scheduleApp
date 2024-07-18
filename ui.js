@@ -1,5 +1,6 @@
 //初期状態
 let season = "springSchedules";
+document.body.style.zoom = "scale(0.60)";
 changeToDisplay();
 displaySchedules(season);
 
