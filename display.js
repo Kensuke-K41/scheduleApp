@@ -69,37 +69,26 @@ async function displaySchedules(storeName) {
     }    
     console.log(timeList)
     const dayWidth = scheduleComponent.offsetWidth / 8;
-    const minutesWith = (scheduleComponent.offsetHeight - 20) / ((nightTime - morningTime) * 60) ;
+    const minutesWith = (scheduleComponent.offsetHeight - 25) / ((nightTime - morningTime) * 60) ;
 
 
-    const scheduleColumns = document.getElementsByClassName("schedule-column");
-    Array.from(scheduleColumns).forEach(column => {
-        const timeLines = document.createElement("div");
-        timeLines.className = "time-lines";
-        if(column.id !== "time"){
-          timeList.forEach(time => {
-            const line = document.createElement("div");
-            line.style.position = "absolute";
-            line.className = "line";
-            line.style.width = "100%";
-            line.style.borderTop = "1px dashed #000"; 
-            timeLines.appendChild(line);
-            column.appendChild(timeLines);
-          });
-        }else{
-          timeList.forEach(time => {
-            const line = document.createElement("div");
-            line.style.position = "absolute";
-            line.className = "line";
-            line.style.width = "100%";
-            line.innerHTML = `${time + morningTime}:00`
-            line.style.top = `${time * 60 * minutesWith + 25}px`;
-            line.style.borderTop = "1px dashed #000"; 
-            timeLines.appendChild(line);
-            column.appendChild(timeLines);
-          });
-        };
+    const timeLines = document.createElement("div");
+    timeLines.className = "time-column";
+    timeList.forEach(time => {
+      const line = document.createElement("div");
+      line.style.position = "absolute";
+      line.className = "line";
+      line.style.width = "100%";
+      line.innerHTML = `${time + morningTime}:00`
+      line.style.fontSize = "25px";
+      line.style.top = `${time * 60 * minutesWith + 25}px`;
+      if(time !== 0){
+        line.style.borderTop = "1px dashed #000"; 
+      }
+      timeLines.appendChild(line);
+      document.getElementById("time").appendChild(timeLines);
     });
+
 
 
     schedules.forEach(schedule => {
@@ -116,7 +105,7 @@ async function displaySchedules(storeName) {
 
         Field_div.style.position = "absolute";
         Field_div.style.width = `${dayWidth - 1}px`;
-        Field_div.style.top = `${minutesWith * startTimeInMinutes + 20}px`
+        Field_div.style.top = `${minutesWith * startTimeInMinutes + 25}px`
         Field_div.style.height = `${minutesWith * durationInMinutes - 2}px`
         Field_div.style.borderTop = "1px solid black"
         Field_div.style.borderBottom = "1px solid black"

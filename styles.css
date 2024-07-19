@@ -1,11 +1,8 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
     height: 100vh;
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
 }
 
 header {
@@ -18,14 +15,18 @@ header {
 
 h1 {
     margin: 0;
-    font-size: 1.2em;
+    font-size: 30px;
 }
 
 nav {
     display: flex;
+    position: absolute;
+    right: 20px;    
+    top: 5px; 
     justify-content: space-between;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px
 }
 
 .season-btn, button {
@@ -43,6 +44,20 @@ nav {
     border-radius: 3px;
 }
 
+#show-settings{
+    height: 40px;
+    width: 60px;
+}
+
+#downloadPdfButton{
+    height: 40px;
+    width: 60px;
+}
+
+#current-season{
+    font-size: 30px;
+}
+
 main {
     flex-grow: 1;
     display: flex;
@@ -58,7 +73,7 @@ main {
 
 #schedule-container {
     width: 100vw;
-    height: 800px;
+    height: 1000px;
     display: flex;
     position: relative;
     flex-grow: 1;
@@ -85,12 +100,6 @@ main {
 
 
 .time-column {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 775px; 
+  height: 975px; 
 }
 
-.line{
-    flex: 1;
-}

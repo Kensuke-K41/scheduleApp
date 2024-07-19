@@ -35,7 +35,7 @@ document.getElementById("switch-seasons").addEventListener("click", async (event
   
   if (newSeason) {
     season = newSeason;
-    document.getElementById("current-season").textContent = `現在の季節: ${seasonName}`;
+    document.getElementById("current-season").textContent = `${seasonName}のスケジュール`;
     await displaySchedules(season);
   }
 });

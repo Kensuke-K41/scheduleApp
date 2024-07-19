@@ -10,7 +10,7 @@
     <header>
         <h1>スケジュール管理アプリ</h1>
         <nav>
-            <span id="current-season">現在の季節: 春</span>
+            <span id="current-season">春のスケジュール</span>
             <button id="show-settings" onclick="changeToSettings()">設定</button>
             <button id="downloadPdfButton">PDF</button>
         </nav>
@@ -35,25 +35,31 @@
                     <option value="Fr">金曜日</option>
                     <option value="Sa">土曜日</option>
                     <option value="Su">日曜日</option>
-                </select>
+                </select><br>
 
                 <label for="startTime">開始時刻:</label>
                 <input type="time" id="startTime" required>
+                <br>
 
                 <label for="endTime">終了時刻:</label>
                 <input type="time" id="endTime" required>
+                <br>
 
                 <label for="name">名前:</label>
                 <input type="text" id="name">
+                <br>
 
                 <label for="nameLink">リンク:</label>
                 <input type="url" id="nameLink">
+                <br>
 
                 <label for="place">場所:</label>
                 <input type="text" id="place">
+                <br>
 
                 <label for="memo">メモ:</label>
                 <textarea id="memo"></textarea>
+                <br>
 
             </form>
             <button id="save-schedule" onclick="saveSchdule">スケジュールに追加する</button>
