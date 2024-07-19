@@ -12,7 +12,7 @@ header {
     height: 30px;
     display: flex;
     flex-direction: row;
-    background-color: #f0f0f0;
+    background-color: #ffa500;
     padding: 10px;
 }
 
@@ -29,7 +29,8 @@ nav {
 }
 
 .season-btn, button {
-    background-color: #4CAF50;
+    background-color: #A52A2A
+;
     border: none;
     color: white;
     padding: 5px 10px;
@@ -72,11 +73,24 @@ main {
     border-bottom:1px solid #000;
 }
 
+
 .schedule-row {
     flex: 1;
-    height: 20px;
+    height: 25px;
     border-bottom: 1px solid #000;
     text-align: center;
     font-weight: bold;
+    background-color: #D3D3D3;
 }
 
+
+.time-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 775px; 
+}
+
+.line{
+    flex: 1;
+}

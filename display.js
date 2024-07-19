@@ -1,7 +1,6 @@
 /*
 HTMLでいうとこんな感じになってる。timeIdは固有値
 ${...}はスケジュールごとの値
-jsでのCSS操作は(要素名_タグ名).style.(プロパティ) = "(プロパティ値)"
 
 <div id="schedule-list">
   <!-- 各スケジュールに対して以下の構造が繰り返される -->
@@ -61,24 +60,58 @@ async function displaySchedules(storeName) {
     `;
 
     const days = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+    // 時間と曜日に基づいて位置を設定
+    const morningTime = 6;
+    const nightTime = 22;
+    const timeList = [];
+    for(i = 0; i < (nightTime -morningTime); i++){
+      timeList[i] = i;
+    }    
+    console.log(timeList)
+    const dayWidth = scheduleComponent.offsetWidth / 8;
+    const minutesWith = (scheduleComponent.offsetHeight - 20) / ((nightTime - morningTime) * 60) ;
+
+
+    const scheduleColumns = document.getElementsByClassName("schedule-column");
+    Array.from(scheduleColumns).forEach(column => {
+        const timeLines = document.createElement("div");
+        timeLines.className = "time-lines";
+        if(column.id !== "time"){
+          timeList.forEach(time => {
+            const line = document.createElement("div");
+            line.style.position = "absolute";
+            line.className = "line";
+            line.style.width = "100%";
+            line.style.borderTop = "1px dashed #000"; 
+            timeLines.appendChild(line);
+            column.appendChild(timeLines);
+          });
+        }else{
+          timeList.forEach(time => {
+            const line = document.createElement("div");
+            line.style.position = "absolute";
+            line.className = "line";
+            line.style.width = "100%";
+            line.innerHTML = `${time + morningTime}:00`
+            line.style.top = `${time * 60 * minutesWith + 25}px`;
+            line.style.borderTop = "1px dashed #000"; 
+            timeLines.appendChild(line);
+            column.appendChild(timeLines);
+          });
+        };
+    });
+
 
     schedules.forEach(schedule => {
         const Field_div = document.createElement("div");
         Field_div.id = schedule.timeId;
 
-        // 時間と曜日に基づいて位置を設定
-        const morningTime = 360;
-        const nightTime = 1320;
-        const dayWidth = scheduleComponent.offsetWidth / 8;
-        const minutesWith = (scheduleComponent.offsetHeight - 20) / (nightTime - morningTime) ;
-        console.log(scheduleComponent.offsetHeight, minutesWith)
         const dayIndex = days.indexOf(schedule.when);
         const [startHour, startMinute] = schedule.startTime.split(':').map(Number);
         const [endHour, endMinute] = schedule.endTime.split(':').map(Number);
-        const startTimeInMinutes = startHour * 60 + startMinute - morningTime;
-        const endTimeInMinutes = endHour * 60 + endMinute - morningTime;
+        const startTimeInMinutes = startHour * 60 + startMinute - morningTime * 60;
+        const endTimeInMinutes = endHour * 60 + endMinute - morningTime * 60;
         const durationInMinutes = endTimeInMinutes - startTimeInMinutes;
-        console.log(startTimeInMinutes, endTimeInMinutes)
 
 
         Field_div.style.position = "absolute";
@@ -102,6 +135,7 @@ async function displaySchedules(storeName) {
         // 名前
         const name_a = document.createElement("a");
         name_a.id = `${schedule.timeId}_name`;
+        name_a.target = "_blank"
         if (schedule.nameLink !== "") {
             name_a.href = schedule.nameLink;
         }
