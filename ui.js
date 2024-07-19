@@ -1,8 +1,11 @@
 //初期状態
 let season = "springSchedules";
-document.body.style.zoom = "scale(0.60)";
 changeToDisplay();
 displaySchedules(season);
+
+window.addEventListener('resize', function() {
+    displaySchedules();
+});
 
 // 季節設定の切り替え
 document.getElementById("switch-seasons").addEventListener("click", async (event) => {
@@ -109,17 +112,14 @@ function changeToSettings(){
 }
 
 document.getElementById("downloadPdfButton").addEventListener("click", () => {
-    const element = document.body; // 対象要素を指定
+    const element = document.body; 
     const option = {
-        margin: 1, // 余白
-        filename: "Myshedule.pdf", // ファイル名
-        image: { type: "png", quality: 1 }, // PDFの生成に使用される画像のタイプとクオリティ
-        html2canvas: { scale: 2, useCORS: true }, // html2canvasで使用される設定を記述。useCORS: trueを設定すると別ドメインの画像を表示できる（サイトによってはできないこともある）
-        jsPDF: { format: "a2", orientation: "portrait" }, // jsPDFで使用される設定を記述
+        margin: 1, 
+        filename: "Myshedule.pdf", 
+        image: { type: "png", quality: 1 }, 
+        html2canvas: { scale: 1, useCORS: true },
+        jsPDF: { format: "a2", orientation: "portrait" },
     };
-    // PDF生成とダウンロードの処理
-    html2pdf()
-        .from(element)
-        .set(option)
-        .save("Myshedule.pdf")
+    html2pdf().from(element).set(option).save("Myshedule.pdf")
 });
+

@@ -59,6 +59,7 @@ main {
 #day-of-week {
     display: flex;
     height: 30px;
+    border-top: 1px solid #000;
     border-bottom:1px solid #000;
 }
 
@@ -72,6 +73,7 @@ main {
 #row {
     display: flex;
     flex-direction: row;
+    border-bottom:1px solid #000;
 }
  
 #time-axis {
@@ -79,6 +81,7 @@ main {
     width: calc(100vw/8 - 1px);
     height: 100vh;
     border-right: 1px solid #000;
+    border-bottom:1px solid #000;
 }
 
 #schedule-list {
@@ -92,5 +95,6 @@ main {
 .schedule-column {
     flex: 1;
     border-right: 1px solid #000;
+    border-bottom:1px solid #000;
 }
   

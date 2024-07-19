@@ -34,14 +34,14 @@ async function displaySchedules(storeName) {
     const schedules = await getAllSchedules(storeName);
     const scheduleComponent = document.getElementById("schedule-list");
     scheduleComponent.innerHTML = `
-                        <div class="schedule-column"></div>
-                        <div class="schedule-column"></div>
-                        <div class="schedule-column"></div>
-                        <div class="schedule-column"></div>
-                        <div class="schedule-column"></div>
-                        <div class="schedule-column"></div>
-                        <div class="schedule-column"></div>
-  `;
+      <div class="schedule-column" id="su-schedule"></div>
+      <div class="schedule-column" id="mo-schedule"></div>
+      <div class="schedule-column" id="tu-schedule"></div>
+      <div class="schedule-column" id="we-schedule"></div>
+      <div class="schedule-column" id="th-schedule"></div>
+      <div class="schedule-column" id="fr-schedule"></div>
+      <div class="schedule-column" id="sa-schedule"></div>
+    `;
 
     const days = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
 
@@ -50,24 +50,25 @@ async function displaySchedules(storeName) {
         Field_div.id = schedule.timeId;
 
         // 時間と曜日に基づいて位置を設定
-        const moningTime = 360;
+        const morningTime = 360;
         const nightTime = 1320;
         const dayWidth = scheduleComponent.offsetWidth / 7;
-        const minutesWith = scheduleComponent.offsetHeight / (nightTime - moningTime) ;
+        const minutesWith = scheduleComponent.offsetHeight / (nightTime - morningTime) ;
         const dayIndex = days.indexOf(schedule.when);
         const [startHour, startMinute] = schedule.startTime.split(':').map(Number);
         const [endHour, endMinute] = schedule.endTime.split(':').map(Number);
-        const startTimeInMinutes = startHour * 60 + startMinute - moningTime;
-        const endTimeInMinutes = endHour * 60 + endMinute - moningTime;
+        const startTimeInMinutes = startHour * 60 + startMinute - morningTime;
+        const endTimeInMinutes = endHour * 60 + endMinute - morningTime;
         const durationInMinutes = endTimeInMinutes - startTimeInMinutes;
 
 
         Field_div.style.position = "absolute";
-        Field_div.style.left = `${dayWidth * dayIndex}px`;
+        // Field_div.style.left = `${dayWidth * dayIndex}px`;
         Field_div.style.width = `${dayWidth - 1}px`;
         Field_div.style.top = `${minutesWith * startTimeInMinutes}px`
         Field_div.style.height = `${minutesWith * durationInMinutes}px`
-        Field_div.style.border = "1px solid black"
+        Field_div.style.borderTop = "1px solid black"
+        Field_div.style.borderBottom = "1px solid black"
         Field_div.style.backgroundColor = "#7CD0F2"
 
         /* 曜日によって表示される場所（横方向）が違うからその設定よう。         *
@@ -216,8 +217,30 @@ async function displaySchedules(storeName) {
           await updateField(storeName, schedule.timeId, "absence", absence_input.value);
         })
 
-        scheduleComponent.appendChild(Field_div);
-    });
+        switch(dayIndex) {
+          case 0:
+            document.getElementById("su-schedule").appendChild(Field_div);
+            break;
+          case 1:
+            document.getElementById("mo-schedule").appendChild(Field_div);
+            break;
+          case 2:
+            document.getElementById("tu-schedule").appendChild(Field_div);
+            break;
+          case 3:
+            document.getElementById("we-schedule").appendChild(Field_div);
+            break;
+          case 4:
+            document.getElementById("th-schedule").appendChild(Field_div);
+            break;
+          case 5:
+            document.getElementById("fr-schedule").appendChild(Field_div);
+            break;
+          case 6:
+            document.getElementById("sa-schedule").appendChild(Field_div);
+            break;
+        }
+      });
 }
 
 
