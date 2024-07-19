@@ -9,6 +9,9 @@ body {
 }
 
 header {
+    height: 30px;
+    display: flex;
+    flex-direction: row;
     background-color: #f0f0f0;
     padding: 10px;
 }
@@ -45,56 +48,35 @@ main {
     overflow: hidden;
 }
 
+
+
 #displayPage{
     width: 100%;
     height: 100%;
 }
 
 #schedule-container {
+    width: 100vw;
+    height: 770px;
     display: flex;
+    position: relative;
     flex-grow: 1;
-    flex-direction: column;
-}
-
-#day-of-week {
-    display: flex;
-    height: 30px;
-    border-top: 1px solid #000;
+    flex-direction: row;
     border-bottom:1px solid #000;
 }
 
-.column {
+.schedule-column{
     flex: 1;
+    flex-direction: column;
     border-right: 1px solid #000;
+    border-bottom:1px solid #000;
+}
+
+.schedule-row {
+    flex: 1;
+    height: 20px;
+    border-bottom: 1px solid #000;
     text-align: center;
     font-weight: bold;
 }
 
-#row {
-    display: flex;
-    flex-direction: row;
-    border-bottom:1px solid #000;
-}
- 
-#time-axis {
-    top: 31px;
-    width: calc(100vw/8 - 1px);
-    height: 100vh;
-    border-right: 1px solid #000;
-    border-bottom:1px solid #000;
-}
-
-#schedule-list {
-    position: relative;
-    flex-grow: 1;
-    height: 100vh;
-    width: calc(100vw - 100vw/8);
-    display: flex;
-}
-
-.schedule-column {
-    flex: 1;
-    border-right: 1px solid #000;
-    border-bottom:1px solid #000;
-}
-  

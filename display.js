@@ -32,15 +32,32 @@ jsでのCSS操作は(要素名_タグ名).style.(プロパティ) = "(プロパ�
 
 async function displaySchedules(storeName) {
     const schedules = await getAllSchedules(storeName);
-    const scheduleComponent = document.getElementById("schedule-list");
+    const scheduleComponent = document.getElementById("schedule-container");
     scheduleComponent.innerHTML = `
-      <div class="schedule-column" id="su-schedule"></div>
-      <div class="schedule-column" id="mo-schedule"></div>
-      <div class="schedule-column" id="tu-schedule"></div>
-      <div class="schedule-column" id="we-schedule"></div>
-      <div class="schedule-column" id="th-schedule"></div>
-      <div class="schedule-column" id="fr-schedule"></div>
-      <div class="schedule-column" id="sa-schedule"></div>
+      <div class="schedule-column" id="time">
+        <div class="schedule-row" id="items">時間 曜日</div>
+      </div>
+      <div class="schedule-column" id="su-schedule">
+        <div class="schedule-row" id="sunday">日</div>
+      </div>
+      <div class="schedule-column" id="mo-schedule">
+        <div class="schedule-row" id="monday">月</div>
+      </div>
+      <div class="schedule-column" id="tu-schedule">
+        <div class="schedule-row" id="tueseday">火</div>
+      </div>
+      <div class="schedule-column" id="we-schedule">
+        <div class="schedule-row" id="wedonesday">水</div>
+      </div>
+      <div class="schedule-column" id="th-schedule">
+        <div class="schedule-row" id="thuesday">木</div>
+      </div>
+      <div class="schedule-column" id="fr-schedule">
+        <div class="schedule-row" id="friday">金</div>
+      </div>
+      <div class="schedule-column" id="sa-schedule">
+        <div class="schedule-row" id="sataday">土</div>
+      </div>
     `;
 
     const days = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
@@ -52,21 +69,23 @@ async function displaySchedules(storeName) {
         // 時間と曜日に基づいて位置を設定
         const morningTime = 360;
         const nightTime = 1320;
-        const dayWidth = scheduleComponent.offsetWidth / 7;
-        const minutesWith = scheduleComponent.offsetHeight / (nightTime - morningTime) ;
+        const dayWidth = scheduleComponent.offsetWidth / 8;
+        const minutesWith = (scheduleComponent.offsetHeight - 20) / (nightTime - morningTime) ;
+        console.log(scheduleComponent.offsetHeight, minutesWith)
         const dayIndex = days.indexOf(schedule.when);
         const [startHour, startMinute] = schedule.startTime.split(':').map(Number);
         const [endHour, endMinute] = schedule.endTime.split(':').map(Number);
         const startTimeInMinutes = startHour * 60 + startMinute - morningTime;
         const endTimeInMinutes = endHour * 60 + endMinute - morningTime;
         const durationInMinutes = endTimeInMinutes - startTimeInMinutes;
+        console.log(startTimeInMinutes, endTimeInMinutes)
 
 
         Field_div.style.position = "absolute";
         // Field_div.style.left = `${dayWidth * dayIndex}px`;
         Field_div.style.width = `${dayWidth - 1}px`;
-        Field_div.style.top = `${minutesWith * startTimeInMinutes}px`
-        Field_div.style.height = `${minutesWith * durationInMinutes}px`
+        Field_div.style.top = `${minutesWith * startTimeInMinutes + 20}px`
+        Field_div.style.height = `${minutesWith * durationInMinutes - 2}px`
         Field_div.style.borderTop = "1px solid black"
         Field_div.style.borderBottom = "1px solid black"
         Field_div.style.backgroundColor = "#7CD0F2"
