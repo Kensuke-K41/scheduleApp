@@ -1,11 +1,11 @@
 //初期状態
 let season = "springSchedules";
-changeToDisplay();
-displaySchedules(season);
 
-window.addEventListener('resize', function() {
-    displaySchedules();
-});
+window.onload = () => {
+  changeToDisplay();
+  displaySchedules(season);
+};
+
 
 // 季節設定の切り替え
 document.getElementById("switch-seasons").addEventListener("click", async (event) => {
@@ -39,6 +39,7 @@ document.getElementById("switch-seasons").addEventListener("click", async (event
     await displaySchedules(season);
   }
 });
+
 
 // 保存ボタン
 document.getElementById("save-schedule").addEventListener("click", async () => {
@@ -85,7 +86,6 @@ function checkInputValue() {
     return true;
 }
 
-// その他の関数は変更なし
 
 
 // 全消去ボタンのイベントリスナー
@@ -105,6 +105,7 @@ function changeToDisplay(){
     document.getElementById(`settingsPage`).style.display = "none";
     document.getElementById(`displayPage`).style.display = "block";
 }
+
 function changeToSettings(){
     // 設定ページを表示し、表示ページを非表示にする
     document.getElementById(`settingsPage`).style.display = "block";
@@ -117,9 +118,14 @@ document.getElementById("downloadPdfButton").addEventListener("click", () => {
         margin: 1, 
         filename: "Myshedule.pdf", 
         image: { type: "png", quality: 1 }, 
-        html2canvas: { scale: 1, useCORS: true },
+        html2canvas: { 
+            scale: 2, 
+            useCORS: true,
+            scrollY: 0,
+            windowWidth: document.documentElement.scrollWidth,
+            windowHeight: document.documentElement.scrollHeight
+        },
         jsPDF: { format: "a2", orientation: "portrait" },
     };
-    html2pdf().from(element).set(option).save("Myshedule.pdf")
+    html2pdf().from(element).set(option).save("Myshedule.pdf");
 });
-

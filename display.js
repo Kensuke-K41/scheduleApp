@@ -82,7 +82,6 @@ async function displaySchedules(storeName) {
 
 
         Field_div.style.position = "absolute";
-        // Field_div.style.left = `${dayWidth * dayIndex}px`;
         Field_div.style.width = `${dayWidth - 1}px`;
         Field_div.style.top = `${minutesWith * startTimeInMinutes + 20}px`
         Field_div.style.height = `${minutesWith * durationInMinutes - 2}px`
@@ -90,43 +89,6 @@ async function displaySchedules(storeName) {
         Field_div.style.borderBottom = "1px solid black"
         Field_div.style.backgroundColor = "#7CD0F2"
 
-        /* 曜日によって表示される場所（横方向）が違うからその設定よう。         *
-        indexは上のdays配列のindex番号と同じ。
-        Field_div.style.(プロパティ) = "(プロパティ値)" 　＊()はいらない
-        Field_div.style.left = `${dayWidth * dayIndex}px` など*/
-
-        /* switch(dayIndex) {
-                case 0:
-                    Field_div.style.position = "absolute";
-                    Field_div.style.left = `${dayWidth * dayIndex}px`;
-                    Field_div.style.top = `${minutesWith * startTimeInMinutes}`
-                    Field_div.style.bottom = `${minutesWith * endTimeInMinutes}`
-                    break;
-                case 1:
-                    Field_div.style.position = "absolute";
-                    Field_div.style.left = `${dayWidth * dayIndex}px`;
-                    break;
-                case 2:
-                    Field_div.style.position = "absolute";
-                    Field_div.style.left = `${dayWidth * dayIndex}px`;
-                    break;
-                case 3:
-                    Field_div.style.position = "absolute";
-                    Field_div.style.left = `${dayWidth * dayIndex}px`;
-                    break;
-                case 4:
-                    Field_div.style.position = "absolute";
-                    Field_div.style.left = `${dayWidth * dayIndex}px`;
-                    break;
-                case 5:
-                    Field_div.style.position = "absolute";
-                    Field_div.style.left = `${dayWidth * dayIndex}px`;
-                    break;
-                case 6:
-                    Field_div.style.position = "absolute";
-                    Field_div.style.left = `${dayWidth * dayIndex}px`;
-                    break;
-            } */
       /* この下に始まる時間終わる時間によって表示する高さと枠の長さを決めるCSSを書く。
       使う値は上のstartTimeInMinutes,endTimeInMinutes,durationInMinutesの三使うといいかも。
       それぞれ0:00から何分経ったかの値。
@@ -136,7 +98,6 @@ async function displaySchedules(storeName) {
       durationInMinutesが90の時1時間30分
 
         */
-      
 
         // 名前
         const name_a = document.createElement("a");

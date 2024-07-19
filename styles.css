@@ -45,7 +45,7 @@ nav {
 main {
     flex-grow: 1;
     display: flex;
-    overflow: hidden;
+    overflow: scroll;
 }
 
 
@@ -57,7 +57,7 @@ main {
 
 #schedule-container {
     width: 100vw;
-    height: 770px;
+    height: 800px;
     display: flex;
     position: relative;
     flex-grow: 1;

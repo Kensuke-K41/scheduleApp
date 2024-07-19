@@ -1,7 +1,7 @@
 function generateTestData(count) {
     const days = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
     const subjects = ['数学', '物理', '化学', '生物', '歴史', '文学', '英語', 'プログラミング', '経済学', '心理学'];
-    const places = ['101教室', '202教室', '303教室', '404教室', '505教室', '図書館', '体育館', 'オンライン'];
+    const places = ['101教室', '202教室', '303教室', '404教室', '505教室', '図書館', '体育館', 'オンライン', ' '];
     return Array.from({ length: count }, (_, i) => {
         const when = days[Math.floor(Math.random() * days.length)];
         const startHour = Math.floor(Math.random() * 12) + 8; // 8:00 to 19:00

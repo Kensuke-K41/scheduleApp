@@ -10,12 +10,6 @@
     <header>
         <h1>スケジュール管理アプリ</h1>
         <nav>
-            <div id="switch-seasons">
-                <button class="season-btn" data-season="spring">春</button>
-                <button class="season-btn" data-season="summer">夏</button>
-                <button class="season-btn" data-season="fall">秋</button>
-                <button class="season-btn" data-season="winter">冬</button>
-            </div>
             <span id="current-season">現在の季節: 春</span>
             <button id="show-settings" onclick="changeToSettings()">設定</button>
             <button id="downloadPdfButton">PDF</button>
@@ -24,6 +18,12 @@
     <main>
         <div id="settingsPage">
             <h2>設定画面</h2>
+            <div id="switch-seasons">
+                <button class="season-btn" data-season="spring">春</button>
+                <button class="season-btn" data-season="summer">夏</button>
+                <button class="season-btn" data-season="fall">秋</button>
+                <button class="season-btn" data-season="winter">冬</button>
+            </div>
             <form id="schedule-form">
                 <label for="when">曜日:</label>
                 <select id="when" required>
